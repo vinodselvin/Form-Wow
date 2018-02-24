@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Form Wow</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .eye, .eye-ball{
+                height: 10px;
+                width: 30px;
+                border: 1px solid gray;
+                text-align: center;
+                border-radius: 50%;
+                display: inline-block;
+                margin: auto;
+                background: white;
+                /*margin-left: 10px;*/
+            }
+            .eye-ball{
+                height: 5px;
+                width:  5px;
+                margin: auto;
+                background: black;
+                margin-top: 2px !important;
+                display: block;
+                border-width: 1px;
+            }
+            .head{
+                padding: 10px;
+                border: 1px solid black;
+                margin: auto;
+                border-radius: 50%;
+                width: 73px;
+                height: 43px;
+                background: #ffdbac;
+                border-top: 15px solid orange;
+                border-top-left-radius: 30%;
+                border-top-right-radius: 30%;
+                border-left: 0px solid #ffdbac;
+                border-right: 0px solid #ffdbac;
+                border-bottom: 1px solid gray !important;
+            }
+            .circle{
+                padding: 20px;
+            }
+            .mouth{
+                margin-top: 15px;
+                width: 20px;
+                /*height: 5px;*/
+                background: maroon;
+                border-radius: 50%;
+                border: 1px solid gray;
+            }
+            input{
+                height: 30px;
+                border: 2px solid goldenrod;
+                border-radius: 6px;
+                padding-left: 5px;
+                padding-right: 5px;
+                width: max-content;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <h3 align="center">Form WOW :)</h3>
+        <form>
+            <table align="center">
+                <tr>
+                <div class="circle">
+                    <div align="center" class="head">
+                        <div class="eye">
+                            <div class="eye-ball"></div>
+                        </div>
+                        <div class="eye">
+                            <div class="eye-ball"></div>
+                        </div>
+                        <div class="mouth"></div>
+                    </div>
+                </div>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="username" onkeydown="inputUsername(this.value.length)"/></td>
+                </tr>
+                <tr>
+                    <td><input type="password" placeholder="password" onkeydown="inputPassword(this.value.length)"/></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            var typingTimer;
+            var doneTypingInterval = 500;
+            
+            function inputUsername(n){
+                var eye = document.getElementsByClassName("eye-ball");
+                var factor = 3.5;
+                eye[0].style.margin = "auto";
+                eye[1].style.margin = "auto";
+                
+                if(parseInt(n) < 22){
+                    console.log(eye[0]);
+                    
+                    eye[0].style.marginLeft = n * factor + "%";
+                    eye[1].style.marginLeft = n * factor + "%";
+                }
+                else{
+                    eye[0].style.marginLeft = "70%";
+                    eye[1].style.marginLeft = "70%";
+                }
+            }
+            
+            function inputPassword(n){
+                n = 25;
+                var eye = document.getElementsByClassName("eye-ball");
+                var factor = 0.7;
+                window.clearTimeout(typingTimer);
+                typingTimer = window.setTimeout(doneTyping, doneTypingInterval);
+                eye[0].style.cssText = "margin-top:" + n * factor + "% !important";
+                eye[1].style.cssText = "margin-top:" + n * factor + "% !important";
+            }
+
+            function doneTyping () {
+                var eye = document.getElementsByClassName("eye-ball");
+                eye[0].style.cssText = "margin-top: -4% !important";
+                eye[1].style.cssText = "margin-top: -4% !important";
+            }
+        </script>
+    </body>
+</html>
